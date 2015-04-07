@@ -1,0 +1,315 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>Hello APP</title>
+    <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/common.css" />
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
+        #wrap {
+            height: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+            flex-flow: column;
+        }
+
+        #main {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+        }
+
+        #footer {
+            width: 100%;
+            text-align: center;
+            height: 56px;
+            line-height: 55px;
+            background-color: #f2f2f2;
+        }
+
+        ul {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        .cloud {
+            background-image: url(image/tb1_normal.png);
+        }
+
+        .client {
+            background-image: url(image/tb2_normal.png);
+        }
+
+        .dev {
+            background-image: url(image/tb3_normal.png);
+        }
+
+        .doc {
+            background-image: url(image/tb4_normal.png);
+        }
+        
+        .test {
+            background-image: url(image/tb5_normal.png);
+        }
+
+        #footer li {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            height: 55px;
+        }
+
+        .bottom_btn {
+            background-position-y: 4px;
+            font-size: 12px;
+            color: #323237;
+            width: 99%;
+            height: 39px;
+            background-repeat: no-repeat no-repeat;
+            background-position-x: center;
+            background-size: 45px;
+        }
+
+        .active.cloud {
+            background-image: url(image/tb1_heighten.png);
+        }
+
+        .active.client {
+            background-image: url(image/tb2_heighten.png);
+        }
+
+        .active.dev {
+            background-image: url(image/tb3_heighten.png);
+        }
+
+        .active.doc {
+            background-image: url(image/tb4_heighten.png);
+        }
+        
+        .active.test {
+            background-image: url(image/tb5_heighten.png);
+        }
+
+
+        .active .bottom_btn {
+            color: #6ab494;
+            background-size: 45px;
+        }
+
+        .topbar {
+            background: #f2f2f2;
+            height: 50px;
+            border-bottom: 1px solid #DDDFE3;
+            line-height: 50px;
+            text-align: center;
+            display: none;
+            color: #323237;
+        }
+
+        .activebar {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="wrap">
+    <header>
+        <div id="cloud" class="topbar  activebar">
+                                   首页
+        </div>
+        <div id="client" class="topbar  ">
+            直播
+        </div>
+        <div id="dev" class="topbar ">
+            添加
+        </div>
+        <div id="doc" class="topbar ">
+            发现
+        </div>
+        <div id="test" class="topbar ">
+            个人
+        </div>
+    </header>
+    <div id="main">
+
+    </div>
+    <div id="footer">
+        <ul>
+            <li tapmode="active" class="active bottom_btn cloud" onclick="randomSwitchBtn(this,'cloud',0)">
+            </li>
+
+            <li tapmode="active" class="bottom_btn client" onclick="randomSwitchBtn(this,'client',1)">
+            </li>
+
+            <li tapmode="active" class="bottom_btn dev" onclick="randomSwitchBtn(this,'dev',2)">
+            </li>
+
+            <li tapmode="active" class="bottom_btn doc" onclick="randomSwitchBtn(this,'doc',3)">
+            </li>
+            <li tapmode="active" class="bottom_btn test" onclick="randomSwitchBtn(this,'test',4)">
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript">
+    apiready = function(){
+    	var key="restData";
+		var restData = $api.getStorage(key);
+
+    	var intro_dot_w = api.winWidth;
+        var intro_dot_h = api.winHeight;
+        intro_dot_w = parseInt(intro_dot_w/3);
+        intro_dot_h = parseInt(intro_dot_h*4/5);
+        
+        var $header = $api.dom('header');
+        $api.fixIos7Bar($header);
+        var $body = $api.dom('body');
+        var $footer = $api.byId('footer');
+        var header_h = $api.offset($header).h;
+        var body_h = $api.offset($body).h;
+        var footer_h = $api.offset($footer).h;
+        var rect_h = body_h - header_h - footer_h;
+       
+        api.openFrameGroup({
+            name: 'group',
+            scrollEnabled: false,
+            rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
+            index: 0,
+            frames: [
+                {
+                    name: 'frame1',
+                    url: 'html/frame1.html'
+                },
+                {
+                    name: 'frame2',
+                    url: 'html/frame2.html'
+                },
+                {
+                    name: 'frame3',
+                    url: 'html/frame3.html'
+                },
+                {
+                    name: 'frame4',
+                    url: 'html/frame4.html'
+                },
+                {
+                    name: 'frame5',
+                    url: 'html/frame5.html'
+                }
+            ]
+        }, function (ret, err) {
+        });
+
+        api.openFrameGroup({
+            name: 'intro_pages',
+            background: '#000000',
+            scrollEnabled: true,
+            rect: {
+                x: 0,
+                y: 0,
+                w: 'auto',
+                h: 'auto'
+            },
+            index: 0,
+            frames:[
+                {
+                    name: 'intro_1', 
+                    url: './html/intro_pages/intro_pages_1.html', 
+                    pageParam:{}, 
+                    bounces:false, 
+                    opaque:true,
+                    bgColor: '#484069'
+                },{
+                    name: 'intro_2', 
+                    url: './html/intro_pages/intro_pages_2.html', 
+                    pageParam:{}, 
+                    bounces:false, 
+                    opaque:true,
+                    bgColor: '#DE96AC'
+                },{
+                    name: 'intro_3', 
+                    url: './html/intro_pages/intro_pages_3.html', 
+                    pageParam:{}, 
+                    bounces:false, 
+                    opaque:true,
+                    bgColor: '#187E00'
+                }
+            ]
+         
+        }, function(ret, err){
+            var name = ret.name;
+            var index = ret.index;
+            if(index === 0){
+            	setTimeout(function(){
+	            	api.openFrame({
+			           name: 'dot_slider',
+			           url: './html/intro_pages/dot_slider.html',
+			           bounces: false,
+			           pageParam: {
+			               w: intro_dot_w
+			           },
+			           rect: {
+			               x: intro_dot_w,
+			               y: intro_dot_h,
+			               w: intro_dot_w,
+			               h: 10
+			           }
+			       	});
+            	},50);
+            }
+            
+		   api.execScript({
+		   	   name: 'root',
+		   	   frameName: 'dot_slider',
+		   	   script: 'try{changeDot('+index+');}catch(e){}'
+		   });
+        });
+        
+        if(restData == 10) {
+        	checkInfoPage();
+        }
+    };
+    
+    function checkInfoPage(){
+    	api.setFrameGroupAttr({
+            name: 'intro_pages',
+            hidden: 'true'
+        });
+        api.setFrameAttr({
+	        name: 'dot_slider',
+	        hidden: true
+        });
+    }
+    
+    function randomSwitchBtn(obj, name, index) {
+        var $header = $api.dom('header');
+        var $titleBar = $api.domAll($header, '.topbar');
+        for (var i = 0; i < $titleBar.length; i++) {
+            $api.removeCls($titleBar[i], 'activebar');
+        }
+        $api.addCls($api.byId(name), 'activebar');
+        var $footer = $api.byId('footer');
+        var $footerBar = $api.domAll($footer, 'li');
+        for (var j = 0; j < $footerBar.length; j++) {
+            $api.removeCls($footerBar[j], 'active');
+        }
+        $api.addCls(obj, 'active');
+        api.setFrameGroupIndex({
+            name: 'group',
+            index: index
+        });
+    }
+ </script>
+</html>
