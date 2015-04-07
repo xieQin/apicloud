@@ -43,7 +43,6 @@
         	<li class="active" onclick="changeIntro(0);" tapmode> </li>
         	<li class="" onclick="changeIntro(1);" tapmode> </li>
         	<li class="" onclick="changeIntro(2);" tapmode> </li>
-        	<li class="" onclick="changeIntro(3);" tapmode> </li>
         </ul>
     </div>
 </body>

@@ -22,7 +22,6 @@ html,body{
     -webkit-box-flex: 1; 
     -webkit-flex: 1;
     flex: 1;
-    padding: 2em;
 }
 #footer{
     height: 30px; line-height: 30px;
