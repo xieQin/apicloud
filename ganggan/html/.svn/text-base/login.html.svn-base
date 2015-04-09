@@ -21,28 +21,37 @@
 		}
 		.wrap {
 			height: 100%;
-			display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-orient: vertical;
-            -webkit-flex-flow: column;
-            flex-flow: column;
 		}
-		
 		#main {
 			width:100%;
 			min-height: 400px;
-			-webkit-box-flex: 1;
-            -webkit-flex: 1;
-            flex: 1;
-            outline: none;
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-            -webkit-box-orient: vertical;
-  			-webkit-flex-flow: column;
-  			flex-flow: column;
 		}
+    .flex {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: flex;
+    }
+    .flex-column {
+      -webkit-box-orient: vertical;
+      -webkit-flex-flow: column;
+      flex-flow: column;
+    }
+    .flex-center {
+      -webkit-align-items: center;
+      align-items: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+    }
+    .flex-1 {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      flex: 1;
+    }
+    .margin-center {
+    float:left;
+height:50%;
+margin-bottom:-120px;
+    }
 		.main-area {
 			margin-top:40%;
 		}
@@ -69,16 +78,8 @@
         .activebar {
             display: block;
         }
-        ul {
-            display: -webkit-box;
-            display: -webkit-flex;
-            display: flex;
-        }
 
         #footer li {
-            -webkit-box-flex: 1;
-            -webkit-flex: 1;
-            flex: 1;
             height:50px;
         }
         #footer p {
@@ -119,32 +120,16 @@
 			
 		}
 		.login-avatar {
+      width: 100px;
+      margin: 0 auto;
 			height: 120px;
-			display: -webkit-flex;
-  			display: flex;
-  			-webkit-align-items: center;
-          	align-items: center;
-  			-webkit-justify-content: center;
-          	justify-content: center;
-		}
-		.login-avatar img {
-			margin: 0 auto;
 		}
 		.login-area {
 			height: 180px;
-          	display: -webkit-flex;
-  			display: flex;
-  			-webkit-box-orient: vertical;
-  			-webkit-flex-flow: column;
-  			flex-flow: column;
-  			-webkit-align-items: center;
-          	align-items: center;
-  			-webkit-justify-content: center;
-          	justify-content: center;
 		}
 		.login-area input {
 			width: 80%;
-			margin: 10px 0;
+			margin: 10px 10%;
 			height: 40px;
 			line-height: 40px;
 			border: solid #ccc 1px;
@@ -156,7 +141,6 @@
 		}
 		.login-func {
 			width: 100%;
-			display: flex;
 		}
 		.login-func span {
 			width: 50%;
@@ -164,22 +148,15 @@
 			line-height: 50px;
 			color: #ccc;
 		}
-		.login-btn {
-			-webkit-flex: 1;
-          	flex: 1;
-          	display: -webkit-flex;
-  			display: flex;
-  			-webkit-align-items: center;
-          	align-items: center;
-  			-webkit-justify-content: center;
-          	justify-content: center;
-		}
 		.login-btn button {
 			background: #377bd0;
 			color: #fff;
 			padding: 10px 15%;
 			border-radius: 3px;
 			outline: none;
+      width: 80%;
+      margin-left: 10%;
+      margin-top: 10%;
 		}
 		.tx-l {text-align:left; text-indent:1em;}
 		.tx-r {
@@ -199,11 +176,11 @@
         	<span class="tx-r" onclick="">注册</span>
         </div>
 	    </header>
-	    <div id="main">
+	    <div id="main" class="flex flex-column flex-1">
 			<div class="login-avatar">
-				<img src="../res/user/100x100.png" alt="">
+				<img src="../res/user/100x100.png" alt="" style="margin-top: 10px;margin-left:">
 			</div>
-			<div class="login-area">
+			<div class="login-area flex flex-column">
 				<input type="text" placeholder="用户名/手机号">
 				<input type="password" placeholder="请输入密码">
 				<div class="login-func">
@@ -211,20 +188,20 @@
 					<span class="tx-r-1">忘记密码?</span>
 				</div>
 			</div>
-			<div class="login-btn">
+			<div class="login-btn flex-1">
 				<button onclick="openUserPage()">登录</button>
 			</div>
 	    </div>
     	<div id="footer">
     	<p>其他登录方式</p>
-    	<ul>
-            <li tapmode="active" class="bottom_btn weibo">
+    	<ul class="flex">
+            <li tapmode="active" class="bottom_btn weibo flex-1">
             </li>
 
-            <li tapmode="active" class="bottom_btn qq">
+            <li tapmode="active" class="bottom_btn qq flex-1">
             </li>
 
-            <li tapmode="active" class="bottom_btn weixin">
+            <li tapmode="active" class="bottom_btn weixin flex-1">
             </li>
         </ul>
     	</div>
@@ -248,6 +225,8 @@
     }
   }
   var openUserPage = function() {
+    var key = "LOGIN_USER";
+    $api.setStorage(key, 10);
     api.closeWin();
   }
 	apiready = function(){

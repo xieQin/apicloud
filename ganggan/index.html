@@ -162,6 +162,7 @@
 </div>
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
+<script type="text/javascript" src="./script/jquery-min.js"></script>
 <script type="text/javascript">
     apiready = function(){
     	var key="restData";
@@ -186,6 +187,7 @@
             scrollEnabled: false,
             rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
             index: 0,
+            reload:true,
             frames: [
                 {
                     name: 'frame1',
@@ -200,11 +202,6 @@
                 {
                     name: 'frame4',
                     url: 'html/frame4.html',
-                    bounces: false,
-                },
-                {
-                    name: 'frame5',
-                    url: 'html/frame5.html',
                     bounces: false,
                 }
             ]
@@ -248,6 +245,9 @@
     }
 
     function showIndexPage(obj, name, index) {
+        api.closeFrame({
+            name: 'group-user'
+        });
         var $header = $api.dom('header');
         var $titleBar = $api.domAll($header, '.topbar');
         for (var i = 0; i < $titleBar.length; i++) {
@@ -267,19 +267,61 @@
     }
 
     function showLoginPage(obj, name, index) {
-        api.openWin({
-            name: 'login',
-            url: 'html/login.html',
-            pageParam: {
+        var key = "LOGIN_USER";
+        var user = $api.getStorage(key);
+
+        if(user == 10) {
+
+            if($('.active').hasClass('test')){
+
+            }
+            else {
+                var $body = $api.dom('body');
+                var $footer = $api.byId('footer');
+                var body_h = $api.offset($body).h;
+                var footer_h = $api.offset($footer).h;
+                var rect_h = body_h - footer_h;
+
+                var $footer = $api.byId('footer');
+                var $footerBar = $api.domAll($footer, 'li');
+                for (var j = 0; j < $footerBar.length; j++) {
+                    $api.removeCls($footerBar[j], 'active');
+                }
+                $api.addCls(obj, 'active');
+
+                api.openFrame({
+                    name: 'group-user',
+                    scrollEnabled: false,
+                    rect: {x: 0, y: 0, w: 'auto', h: rect_h},
+                    pageParam: {name: 'test'},
+                    url: 'html/frame5.html',
+                    bounces: false,
+                    reload:true,
+                    vScrollBarEnabled:false,
+                    animation: {
+                         type: 'movein',
+                        subType: 'from_right',
+                        duration: 300
+                    },
+                }, function (ret, err) {
+                });
+            }
+        }
+        else {
+            api.openWin({
                 name: 'login',
-            },
-            animation: {
-                type: 'movein',
-                subType: 'from_right',
-                duration: 300
-            },
-            vScrollBarEnabled: false
-        });
+                url: 'html/login.html',
+                pageParam: {
+                    name: 'login',
+                },
+                animation: {
+                    type: 'movein',
+                    subType: 'from_right',
+                    duration: 300
+                },
+                vScrollBarEnabled: false
+            });
+        }
     }
     
     function showIntroPage(intro_dot_w, intro_dot_h) {
