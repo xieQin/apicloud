@@ -24,6 +24,18 @@
             line-height:35px;
             text-align:center;
         }
+        .topbar {
+            background: #377bd0;
+            height: 50px;
+            border-bottom: 1px solid #DDDFE3;
+            line-height: 50px;
+            text-align: center;
+            display: none;
+            color: #fff;
+        }
+        .activebar {
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -41,6 +53,5 @@
 </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
-<script type="text/javascript">
-</script>
+
 </html>

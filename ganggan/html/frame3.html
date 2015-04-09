@@ -32,6 +32,14 @@
             -webkit-flex: 1;
             flex: 1;
 		}
+		.main-area {
+			margin-top:40%;
+		}
+		#main img {
+			width:23%;
+			float:left;
+			margin:5%;
+		}
 		#footer {
             width: 100%;
             text-align: center;
@@ -48,21 +56,37 @@
 <body>
 	<div id="wrap">
 	    <div id="main">
+	    	<div class="main-area">
+	    		<img src="../res/tianjia_bt1.png" alt="" onclick="openPublish()"/>
+	    		<img src="../res/tianjia_bt2.png" alt="" onclick="openPublish()"/>
+	    		<img src="../res/tianjia_bt3.png" alt="" onclick="openPublish()"/>
+	    		<img src="../res/tianjia_bt4.png" alt="" onclick="openPublish()"/>
+	    		<img src="../res/tianjia_bt5.png" alt="" onclick="openPublish()"/>
+	    	</div>
 	    </div>
     	<div id="footer">
     		<img src="../res/38x38.png" alt="退出" onclick="closePublish();"/>
     	</div>
 	</div>
 </body>
+<script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
+	var openPublish = function(){
+		api.openWin({
+            name: 'publishStory',
+            url: 'publish/publish.html',
+            pageParam: {
+                name: 'publishStory',
+            },
+            animation: {
+                type: 'movein',
+                subType: 'from_right',
+                duration: 300
+            }
+        });
+	}
 	var closePublish = function(){
-		api.closeFrameGroup({
-    		name: 'publish'
-		});
-//		api.setFrameGroupAttr({
-//          name: 'group',
-//          hidden: 'false'
-//      });
+		api.closeWin();
 	};
 	apiready = function(){
 		

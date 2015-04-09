@@ -11,7 +11,6 @@
             height: 100%;
             width: 100%;
         }
-
         #wrap {
             height: 100%;
             display: -webkit-box;
@@ -107,13 +106,13 @@
         }
 
         .topbar {
-            background: #f2f2f2;
+            background: #377bd0;
             height: 50px;
             border-bottom: 1px solid #DDDFE3;
             line-height: 50px;
             text-align: center;
             display: none;
-            color: #323237;
+            color: #fff;
         }
 
         .activebar {
@@ -170,8 +169,8 @@
 
     	var intro_dot_w = api.winWidth;
         var intro_dot_h = api.winHeight;
-        intro_dot_w = parseInt(intro_dot_w/3);
-        intro_dot_h = parseInt(intro_dot_h*4/5);
+        intro_dot_w = parseInt(intro_dot_w/3, 10);
+        intro_dot_h = parseInt(intro_dot_h*4/5, 10);
         
         var $header = $api.dom('header');
         $api.fixIos7Bar($header);
@@ -195,30 +194,60 @@
                 },
                 {
                     name: 'frame2',
-                    url: 'html/frame2.html'
-                },
-                {
-                    name: 'frame3',
-                    url: 'html/frame3.html'
+                    url: 'html/frame2.html',
+                    bounces: false,
                 },
                 {
                     name: 'frame4',
-                    url: 'html/frame4.html'
+                    url: 'html/frame4.html',
+                    bounces: false,
                 },
                 {
                     name: 'frame5',
-                    url: 'html/frame5.html'
+                    url: 'html/frame5.html',
+                    bounces: false,
                 }
             ]
         }, function (ret, err) {
         });
 
 		if(restData != 1) {
-        	showIndexPage(intro_dot_w, intro_dot_h);
+        	showIntroPage(intro_dot_w, intro_dot_h);
         }
     };
     
     function randomSwitchBtn(obj, name, index) {
+        switch(index){
+            case 0:
+                showIndexPage(obj, name, 0);
+                break;
+            case 1:
+                showIndexPage(obj, name, 1);
+                break;
+            case 2:
+                api.openWin({
+                    name: 'publish',
+                    url: 'html/frame3.html',
+                    pageParam: {
+                        name: 'frame3',
+                    },
+                    animation: {
+                        type: 'movein',
+                        subType: 'from_bottom',
+                        duration: 300
+                    }
+                });
+                break;
+            case 3:
+                showIndexPage(obj, name, 2);
+                break;
+            case 4:
+                showLoginPage(obj, name, 3);
+                break;
+        }
+    }
+
+    function showIndexPage(obj, name, index) {
         var $header = $api.dom('header');
         var $titleBar = $api.domAll($header, '.topbar');
         for (var i = 0; i < $titleBar.length; i++) {
@@ -231,31 +260,29 @@
             $api.removeCls($footerBar[j], 'active');
         }
         $api.addCls(obj, 'active');
-        if(index == 2) {
-        	api.openFrameGroup({
-            	name: 'publish',
-            	scrollEnabled: false,
-            	rect: {x: 0, y: 0, w: 'auto', h: 'auto'},
-            	index: 0,
-            	frames: [
-            	    {
-            	        name: 'frame3',
-            	        url: 'html/frame3.html',
-            	        bounces: false,
-               		}
-           	 	]
-        		}, function (ret, err) {
-        	});
-        }
-        else {
-        	api.setFrameGroupIndex({
-        	    name: 'group',
-        	    index: index
-        	});
-        }
+        api.setFrameGroupIndex({
+            name: 'group',
+            index: index
+        });
+    }
+
+    function showLoginPage(obj, name, index) {
+        api.openWin({
+            name: 'login',
+            url: 'html/login.html',
+            pageParam: {
+                name: 'login',
+            },
+            animation: {
+                type: 'movein',
+                subType: 'from_right',
+                duration: 300
+            },
+            vScrollBarEnabled: false
+        });
     }
     
-    function showIndexPage(intro_dot_w, intro_dot_h) {
+    function showIntroPage(intro_dot_w, intro_dot_h) {
     	api.openFrameGroup({
             name: 'intro_pages',
             background: '#000000',
