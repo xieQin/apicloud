@@ -205,14 +205,12 @@
 
     var changeIndex = function(index){
         openIndex(index);
-        if(index == 2) {
-
-        }
-        else {
-            $('#footer ul li').removeClass('active');
-            $('#footer ul li').eq(index).addClass('active');
-        }
     };
+
+    function changeIndexFooter(index) {
+        $('#footer ul li').removeClass('active');
+        $('#footer ul li').eq(index).addClass('active');
+    }
 
     apiready = function(){
     	var key="restData";
@@ -247,27 +245,27 @@
                         frames: [
                             {
                                 name: 'dynamic',
-                                url: 'html//index/dynamic.html',
+                                url: 'html/index/dynamic.html',
                                 bounces: false,
                             },
                             {
                                 name: 'hot',
-                                url: 'html//index/hot.html',
+                                url: 'html/index/hot.html',
                                 bounces: false,
                             },
                             {
                                 name: 'analysis',
-                                url: 'html//index/analysis.html',
+                                url: 'html/index/analysis.html',
                                 bounces: false,
                             },
                             {
                                 name: 'help',
-                                url: 'html//index/help.html',
+                                url: 'html/index/help.html',
                                 bounces: false,
                             },
                             {
                                 name: 'story',
-                                url: 'html//index/story.html',
+                                url: 'html/index/story.html',
                                 bounces: false,
                             }
                         ]
@@ -277,6 +275,7 @@
                         $('.nav ul li').removeClass('li-active');
                         $('.nav ul li').eq(index).addClass('li-active');
                     });
+                    changeIndexFooter(index);
                     break;
                 case 1:
                     hideIndex();
@@ -286,9 +285,11 @@
                         rect: {x: 0, y: 0, w: 'auto', h: frame_h},
                         reload:true,
                         bounces: false,
+                        bgColor: '#fff',
                         url: 'html/frame2.html'
                     }, function (ret, err) {
                     });
+                    changeIndexFooter(index);
                     break;
                 case 2:
                     api.openWin({
@@ -312,25 +313,33 @@
                         rect: {x: 0, y: 0, w: 'auto', h: frame_h},
                         reload:true,
                         bounces: false,
+                        bgColor: '#fff',
                         url: 'html/frame4.html'
                     }, function (ret, err) {
                     });
+                    changeIndexFooter(index);
                     break;
                 case 4:
                     var key = "LOGIN_USER";
                     var user = $api.getStorage(key);
                     if(user == 1) {
-                        hideIndex();
-                        api.openFrame({
-                            name: 'group-user',
-                            scrollEnabled: false,
-                            rect: {x: 0, y: 0, w: 'auto', h: frame_h},
-                            url: 'html/frame5.html',
-                            bounces: false,
-                            reload:true,
-                            vScrollBarEnabled:false,
-                        }, function (ret, err) {
-                        });
+                        if($(".active").hasClass("test")){
+                        }
+                        else{
+                            hideIndex();
+                            api.openFrame({
+                                name: 'group-user',
+                                scrollEnabled: false,
+                                rect: {x: 0, y: 0, w: 'auto', h: frame_h},
+                                url: 'html/frame5.html',
+                                bounces: false,
+                                reload:true,
+                                bgColor: '#fff',
+                                vScrollBarEnabled:false,
+                            }, function (ret, err) {
+                            });
+                            changeIndexFooter(index);
+                        }
                     }
                     else {
                         api.openWin({

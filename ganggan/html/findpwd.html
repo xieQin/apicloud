@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<title>找回密码</title>
+<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+        html,body,div{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width:100%;
+            height:100%;
+        }
+        .wrap {
+            height: 100%;
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+            flex-flow: column;
+        }
+        
+        #main {
+            width:100%;
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            outline: none;
+        }
+        .main-area {
+            margin-top:40%;
+        }
+        #main img {
+            width:23%;
+            float:left;
+            margin:5%;
+        }
+        .topbar {
+            background: #377bd0;
+            height: 50px;
+            border-bottom: 1px solid #DDDFE3;
+            line-height: 50px;
+            text-align: center;
+            display: none;
+            color: #fff;
+            /*background: url() no-repeat;*/
+        }
+        .activebar {
+            display: block;
+        }
+        .topbar span {
+            color: #fff;
+        }
+        .tx-l {text-align:left; text-indent:1em;}
+        .tx-r {
+            text-indent: 16%;
+        }
+        section {
+            -webkit-flex: 1;
+            flex: 1;
+            -webkit-box-flex:1;
+            display:-webkit-box;
+            -webkit-box-orient:vertical;
+            background-color:#fff;
+            overflow: auto;
+        }
+        a {
+            width: 100%;
+            position:relative;
+            -webkit-box-flex:1;
+            margin-bottom: 15px;
+        }
+        a>span {
+            margin-top:15px;
+            margin-left:20px;
+            line-height:16px;
+            font-size:16px;
+            line-height:16px;
+        }
+        a>em {
+            position:absolute;
+            top:14px;
+            right:10px;
+            width:18px;
+            height:18px;
+            background:url(../res/user/yhzx_right@2x.png) no-repeat;
+            -webkit-border-radius:3px;
+            background-size: cover;
+            color:#3c7390;
+            font-size:10px;
+            line-height:18px;
+            text-align:center;
+        }
+        .topbar>em.back {
+            position: absolute;
+            left: 14px;
+            width: 20px;
+            height: 38px;
+            top: 6px;
+            background-size: cover;
+            background: url(../res/lift_nomal.png) no-repeat;
+        }
+        section a span.placeholder{
+            color: #ccc;
+            position: absolute;
+            right: 40px;
+        }
+        footer {
+            height: 50px;
+        }
+        footer>span {
+            color: #fff;
+            border-radius: 3px;
+            width: 100%;
+            line-height: 50px;
+            display: block;
+            height: 50px;
+            text-align: center;
+            background-color: red;
+        }
+        .input-area {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .input-area input {
+            width: 100%;
+            height: 40px;
+            margin-top: 10px;
+            border: solid 1px #ccc;
+            border-radius: 6px;
+            text-indent: 1em;
+            line-height:normal;
+            outline: none;
+        }
+        .input-area span.input-btn {
+            color: #fff;
+            border-radius: 3px;
+            width: 80%;
+            line-height: 40px;
+            display: block;
+            margin: 20px auto;
+            height: 40px;
+            text-align: center;
+            background-color: red;
+        }
+        .get-code {
+            position: absolute;
+            top: 17px;
+            right: 13%;
+            background: #377bd0;
+            color: #fff;
+            padding: 2px 5px;
+        }
+        .pt20 {padding-top: 20px;}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <header>
+        <div class="topbar activebar">
+            <em class="back" onclick="closeCurrent();"></em>
+            <span>找回密码</span>
+        </div>
+        </header>
+        <section>
+            <div class="input-area">
+                <input type="text" placeholder="请输入手机号">
+                <span class="get-code">获取验证码</span>
+                <input type="text" placeholder="请输入验证码">
+                <input type="password" placeholder="请设置6-18位密码">
+                <input type="password" placeholder="确认新密码">
+            </div>
+            <div class="input-area pt20">
+                <span class="input-btn">找回密码</span>
+            </div>
+        </section>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/jquery-min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
+<script type="text/javascript">
+    var closeCurrent = function() {
+        api.closeWin();
+    }
+</script>
+</html>

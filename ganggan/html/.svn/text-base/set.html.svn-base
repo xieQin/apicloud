@@ -6,7 +6,7 @@
 <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
 <link rel="stylesheet" type="text/css" href="../css/api.css"/>
 <link rel="stylesheet" type="text/css" href="../css/common.css" />
-<style>
+    <style>
     	html,body,div{
 			margin: 0;
 			padding: 0;
@@ -110,19 +110,20 @@
 			position: absolute;
   			right: 40px;
 		}
-footer {
-    height: 50px;
-}
-footer>span {
-color: #fff;
-  border-radius: 3px;
-  width: 100%;
-  line-height: 50px;
-  display: block;
-  height: 50px;
-  text-align: center;
-  background-color: red;
-}
+        footer {
+            height: 50px;
+        }
+        footer>span {
+            color: #fff;
+            border-radius: 3px;
+            width: 80%;
+            line-height: 40px;
+            display: block;
+            margin: 0 auto;
+            height: 40px;
+            text-align: center;
+            background-color: red;
+        }
     </style>
 </head>
 <body>

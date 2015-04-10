@@ -131,7 +131,7 @@ margin-bottom:-120px;
 			width: 80%;
 			margin: 10px 10%;
 			height: 40px;
-			line-height: 40px;
+			line-height:normal;
 			border: solid #ccc 1px;
 			text-indent: 1em;
 		}
@@ -173,7 +173,7 @@ margin-bottom:-120px;
         <div class="topbar activebar">
         	<span class="tx-l goback" onclick="closeCurrent()">取消</span>
         	<span>登录</span>
-        	<span class="tx-r" onclick="">注册</span>
+        	<span class="tx-r" onclick="openRegister();">注册</span>
         </div>
 	    </header>
 	    <div id="main" class="flex flex-column flex-1">
@@ -185,7 +185,7 @@ margin-bottom:-120px;
 				<input type="password" placeholder="请输入密码">
 				<div class="login-func">
 					<span class="tx-l-1"><img src="../res/user/dl_jzmm_nomal@3x.png" alt="" onclick="rememberPas(this)" type="0">记住密码</span>
-					<span class="tx-r-1">忘记密码?</span>
+					<span class="tx-r-1" onclick="openFindpwd();">忘记密码?</span>
 				</div>
 			</div>
 			<div class="login-btn flex-1">
@@ -224,6 +224,28 @@ margin-bottom:-120px;
       $(obj).attr('src', '../res/user/dl_jzmm_nomal@3x.png');
       $(obj).attr("type", "0");
     }
+  }
+  var openRegister = function() {
+    api.openWin({
+      name: 'register',
+      url: 'register.html',
+      animation: {
+        type: 'movein',
+        subType: 'from_right',
+        duration: 300
+      }
+    });
+  }
+  var openFindpwd = function() {
+    api.openWin({
+      name: 'findpwd',
+      url: 'findpwd.html',
+      animation: {
+        type: 'movein',
+        subType: 'from_right',
+        duration: 300
+      }
+    });
   }
   var openUserPage = function() {
     var key = "LOGIN_USER";

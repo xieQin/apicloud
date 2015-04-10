@@ -4,8 +4,26 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <title>frame2</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+    .topbar {
+        background: #377bd0;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: #fff;
+        }
+    </style>
 </head>
 <body>
-直播模块
+<div id="wrap">
+	<header id="header">
+        <div class="topbar  activebar">直播</div>
+    </header>
+    <div id="main">
+		222222222222222
+    </div>
+</div>
 </body>
 </html>

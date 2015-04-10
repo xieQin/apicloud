@@ -196,7 +196,7 @@ a>em {
 	function openWin(i) {
 		var key = "LOGIN_USER";
         var user = $api.getStorage(key);
-        if(user == 10) {
+        if(user == 1) {
         	api.openWin({
             	name: 'set',
             	url: 'set.html',
@@ -226,43 +226,6 @@ a>em {
             });
         }
 	}
-	function randomSwitchBtn(obj, name, index) {
-		switch(index){
-            case 0:
-                showIndexPage(obj, name, 0);
-                break;
-            case 1:
-                showIndexPage(obj, name, 1);
-                break;
-            case 2:
-                api.openWin({
-                    name: 'publish',
-                    url: 'frame3.html',
-                    pageParam: {
-                        name: 'frame3',
-                    },
-                    animation: {
-                        type: 'movein',
-                        subType: 'from_bottom',
-                        duration: 300
-                    }
-                });
-                break;
-            case 3:
-                showIndexPage(obj, name, 2);
-                break;
-            case 4:
-                break;
-        }
-	}
-
-	function showIndexPage(obj, name, index) {
-        api.execScript({
-    		name: 'index',
-    		script: 'randomSwitchBtn(' + obj + ', ' + name + ', ' + index + ')'
-		});
-		api.closeWin();
-    }
     apiready = function(){
         
     };
