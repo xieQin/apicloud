@@ -320,9 +320,7 @@
                     changeIndexFooter(index);
                     break;
                 case 4:
-                    var key = "LOGIN_USER";
-                    var user = $api.getStorage(key);
-                    if(user == 1) {
+                    if(localStorage.getItem("userId")) {
                         if($(".active").hasClass("test")){
                         }
                         else{

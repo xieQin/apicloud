@@ -181,9 +181,26 @@
 		api.closeWin();
 	}
 	var logOut = function() {
-		var key = "LOGIN_USER";
-    	$api.setStorage(key, 0);
-		api.closeWin();
+        api.showProgress();
+        var user = api.require('user');
+        user.logout(function(ret, err){
+            api.hideProgress();
+            if(ret){
+                api.confirm({
+                    title: '确定要登出账号?',
+                    buttons:[ '取消', '确定']
+                },function(ret,err){
+                    if(ret.buttonIndex == 2){
+                        localStorage.removeItem('userId');
+                        api.closeWin();
+                    }else{
+
+                    }
+                });
+            }else{
+                api.toast({msg: err.message, location: "middle"})
+            }
+        });
 	}
 	function openWin(i) {
 		var i = parseInt(i, 10);

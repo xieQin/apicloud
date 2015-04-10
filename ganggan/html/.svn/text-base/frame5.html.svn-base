@@ -196,7 +196,7 @@ a>em {
 	function openWin(i) {
 		var key = "LOGIN_USER";
         var user = $api.getStorage(key);
-        if(user == 1) {
+        if(localStorage.getItem("userId")) {
         	api.openWin({
             	name: 'set',
             	url: 'set.html',
