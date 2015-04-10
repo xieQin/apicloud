@@ -105,57 +105,86 @@
             background-size: 45px;
         }
 
+        .activebar {
+            display: block;
+        }
+        .nav ul {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+        .nav ul li {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            height: 35px;
+            font-size:16px;
+            line-height:35px;
+            text-align:center;
+            border-bottom: solid #ccc 1px;
+        }
+        .nav ul li.li-active {
+            background: #377bd0;
+            color: #fff;
+        }
         .topbar {
             background: #377bd0;
             height: 50px;
-            border-bottom: 1px solid #DDDFE3;
             line-height: 50px;
             text-align: center;
-            display: none;
             color: #fff;
         }
+        .header {
 
-        .activebar {
-            display: block;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
 <div id="wrap">
-    <header>
-        <div id="cloud" class="topbar  activebar">
-                                   首页
-        </div>
-        <div id="client" class="topbar  ">
-            直播
-        </div>
-        <div id="dev" class="topbar ">
-            添加
-        </div>
-        <div id="doc" class="topbar ">
-            发现
-        </div>
-        <div id="test" class="topbar ">
-            个人
-        </div>
-    </header>
+    <div class="header">
+        <header id="header">
+            <div id="cloud" class="topbar  activebar">首页</div>
+        </header>
+        <header class="nav">
+            <ul>
+                <li tapmode="active" class="li-active" onclick="jumpToIndex(0)">动态</li>
+                <li tapmode="active" onclick="jumpToIndex(1)">热门</li>
+                <li tapmode="active" onclick="jumpToIndex(2)">分析</li>
+                <li tapmode="active" onclick="jumpToIndex(3)">求助</li>
+                <li tapmode="active" onclick="jumpToIndex(4)">故事</li>
+            </ul>
+        </header>
+    </div>
+    <div class="header hidden">
+        <header id="header">
+            <div class="topbar  activebar">直播</div>
+        </header>
+    </div>
+    <div class="header hidden">
+        <header id="header">
+            <div class="topbar  activebar">发现</div>
+        </header>
+    </div>
     <div id="main">
 
     </div>
     <div id="footer">
         <ul>
-            <li tapmode="active" class="active bottom_btn cloud" onclick="randomSwitchBtn(this,'cloud',0)">
+            <li tapmode="active" class="active bottom_btn cloud" onclick="changeIndex(0)">
             </li>
 
-            <li tapmode="active" class="bottom_btn client" onclick="randomSwitchBtn(this,'client',1)">
+            <li tapmode="active" class="bottom_btn client" onclick="changeIndex(1)">
             </li>
 
-            <li tapmode="active" class="bottom_btn dev" onclick="randomSwitchBtn(this,'dev',2)">
+            <li tapmode="active" class="bottom_btn dev" onclick="changeIndex(2)">
             </li>
 
-            <li tapmode="active" class="bottom_btn doc" onclick="randomSwitchBtn(this,'doc',3)">
+            <li tapmode="active" class="bottom_btn doc" onclick="changeIndex(3)">
             </li>
-            <li tapmode="active" class="bottom_btn test" onclick="randomSwitchBtn(this,'test',4)">
+            <li tapmode="active" class="bottom_btn test" onclick="changeIndex(4)">
             </li>
         </ul>
     </div>
@@ -164,6 +193,27 @@
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript" src="./script/jquery-min.js"></script>
 <script type="text/javascript">
+    var jumpToIndex = function(index){
+        $('.nav ul li').removeClass('li-active');
+        $('.nav ul li').eq(index).addClass('li-active');
+        api.setFrameGroupIndex ({
+            name: 'index',
+            index: index,
+            scroll: true
+        });
+    }
+
+    var changeIndex = function(index){
+        openIndex(index);
+        if(index == 2) {
+
+        }
+        else {
+            $('#footer ul li').removeClass('active');
+            $('#footer ul li').eq(index).addClass('active');
+        }
+    };
+
     apiready = function(){
     	var key="restData";
 		var restData = $api.getStorage(key);
@@ -173,7 +223,7 @@
         intro_dot_w = parseInt(intro_dot_w/3, 10);
         intro_dot_h = parseInt(intro_dot_h*4/5, 10);
         
-        var $header = $api.dom('header');
+        var $header = $api.dom('.header');
         $api.fixIos7Bar($header);
         var $body = $api.dom('body');
         var $footer = $api.byId('footer');
@@ -181,147 +231,138 @@
         var body_h = $api.offset($body).h;
         var footer_h = $api.offset($footer).h;
         var rect_h = body_h - header_h - footer_h;
-       
-        api.openFrameGroup({
-            name: 'group',
-            scrollEnabled: false,
-            rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
-            index: 0,
-            reload:true,
-            frames: [
-                {
-                    name: 'frame1',
-                    url: 'html/frame1.html',
-                    bounces: false,
-                },
-                {
-                    name: 'frame2',
-                    url: 'html/frame2.html',
-                    bounces: false,
-                },
-                {
-                    name: 'frame4',
-                    url: 'html/frame4.html',
-                    bounces: false,
-                }
-            ]
-        }, function (ret, err) {
-        });
+        var frame_h = body_h - footer_h;
+
+        window.openIndex = function(index) {
+            switch(index) {
+                case 0:
+                    hideIndex();
+                    api.openFrameGroup({
+                        name: 'index',
+                        scrollEnabled: false,
+                        rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
+                        index: 0,
+                        reload:true,
+                        scrollEnabled:true,
+                        frames: [
+                            {
+                                name: 'dynamic',
+                                url: 'html//index/dynamic.html',
+                                bounces: false,
+                            },
+                            {
+                                name: 'hot',
+                                url: 'html//index/hot.html',
+                                bounces: false,
+                            },
+                            {
+                                name: 'analysis',
+                                url: 'html//index/analysis.html',
+                                bounces: false,
+                            },
+                            {
+                                name: 'help',
+                                url: 'html//index/help.html',
+                                bounces: false,
+                            },
+                            {
+                                name: 'story',
+                                url: 'html//index/story.html',
+                                bounces: false,
+                            }
+                        ]
+                    }, function (ret, err) {
+                        var name = ret.name;
+                        var index = ret.index;
+                        $('.nav ul li').removeClass('li-active');
+                        $('.nav ul li').eq(index).addClass('li-active');
+                    });
+                    break;
+                case 1:
+                    hideIndex();
+                    api.openFrame({
+                        name: 'live',
+                        scrollEnabled: false,
+                        rect: {x: 0, y: 0, w: 'auto', h: frame_h},
+                        reload:true,
+                        bounces: false,
+                        url: 'html/frame2.html'
+                    }, function (ret, err) {
+                    });
+                    break;
+                case 2:
+                    api.openWin({
+                        name: 'publish',
+                        url: 'html/frame3.html',
+                        pageParam: {
+                            name: 'frame3',
+                        },
+                        animation: {
+                            type: 'movein',
+                            subType: 'from_bottom',
+                            duration: 300
+                        }
+                    });
+                    break;
+                case 3:
+                    hideIndex();
+                    api.openFrame({
+                        name: 'find',
+                        scrollEnabled: false,
+                        rect: {x: 0, y: 0, w: 'auto', h: frame_h},
+                        reload:true,
+                        bounces: false,
+                        url: 'html/frame4.html'
+                    }, function (ret, err) {
+                    });
+                    break;
+                case 4:
+                    var key = "LOGIN_USER";
+                    var user = $api.getStorage(key);
+                    if(user == 1) {
+                        hideIndex();
+                        api.openFrame({
+                            name: 'group-user',
+                            scrollEnabled: false,
+                            rect: {x: 0, y: 0, w: 'auto', h: frame_h},
+                            url: 'html/frame5.html',
+                            bounces: false,
+                            reload:true,
+                            vScrollBarEnabled:false,
+                        }, function (ret, err) {
+                        });
+                    }
+                    else {
+                        api.openWin({
+                            name: 'login',
+                            url: 'html/login.html',
+                            pageParam: {
+                                name: 'login',
+                            },
+                            animation: {
+                                type: 'movein',
+                                subType: 'from_right',
+                                duration: 300
+                            },
+                            vScrollBarEnabled: false
+                        }, function (ret, err) {
+                        });
+                    }
+                    break;
+            }
+        }
+        changeIndex(0);
 
 		if(restData != 1) {
         	showIntroPage(intro_dot_w, intro_dot_h);
         }
     };
-    
-    function randomSwitchBtn(obj, name, index) {
-        switch(index){
-            case 0:
-                showIndexPage(obj, name, 0);
-                break;
-            case 1:
-                showIndexPage(obj, name, 1);
-                break;
-            case 2:
-                api.openWin({
-                    name: 'publish',
-                    url: 'html/frame3.html',
-                    pageParam: {
-                        name: 'frame3',
-                    },
-                    animation: {
-                        type: 'movein',
-                        subType: 'from_bottom',
-                        duration: 300
-                    }
-                });
-                break;
-            case 3:
-                showIndexPage(obj, name, 2);
-                break;
-            case 4:
-                showLoginPage(obj, name, 3);
-                break;
-        }
-    }
 
-    function showIndexPage(obj, name, index) {
-        api.closeFrame({
-            name: 'group-user'
-        });
-        var $header = $api.dom('header');
-        var $titleBar = $api.domAll($header, '.topbar');
-        for (var i = 0; i < $titleBar.length; i++) {
-            $api.removeCls($titleBar[i], 'activebar');
-        }
-        $api.addCls($api.byId(name), 'activebar');
-        var $footer = $api.byId('footer');
-        var $footerBar = $api.domAll($footer, 'li');
-        for (var j = 0; j < $footerBar.length; j++) {
-            $api.removeCls($footerBar[j], 'active');
-        }
-        $api.addCls(obj, 'active');
-        api.setFrameGroupIndex({
-            name: 'group',
-            index: index
-        });
-    }
-
-    function showLoginPage(obj, name, index) {
-        var key = "LOGIN_USER";
-        var user = $api.getStorage(key);
-
-        if(user == 10) {
-
-            if($('.active').hasClass('test')){
-
-            }
-            else {
-                var $body = $api.dom('body');
-                var $footer = $api.byId('footer');
-                var body_h = $api.offset($body).h;
-                var footer_h = $api.offset($footer).h;
-                var rect_h = body_h - footer_h;
-
-                var $footer = $api.byId('footer');
-                var $footerBar = $api.domAll($footer, 'li');
-                for (var j = 0; j < $footerBar.length; j++) {
-                    $api.removeCls($footerBar[j], 'active');
-                }
-                $api.addCls(obj, 'active');
-
-                api.openFrame({
-                    name: 'group-user',
-                    scrollEnabled: false,
-                    rect: {x: 0, y: 0, w: 'auto', h: rect_h},
-                    pageParam: {name: 'test'},
-                    url: 'html/frame5.html',
-                    bounces: false,
-                    reload:true,
-                    vScrollBarEnabled:false,
-                    animation: {
-                         type: 'movein',
-                        subType: 'from_right',
-                        duration: 300
-                    },
-                }, function (ret, err) {
-                });
-            }
-        }
-        else {
-            api.openWin({
-                name: 'login',
-                url: 'html/login.html',
-                pageParam: {
-                    name: 'login',
-                },
-                animation: {
-                    type: 'movein',
-                    subType: 'from_right',
-                    duration: 300
-                },
-                vScrollBarEnabled: false
-            });
-        }
+    function hideIndex() {
+        api.setFrameGroupAttr({name: 'index',hidden:true});
+        api.setFrameAttr({name: 'live',hidden:true});
+        api.setFrameAttr({name: 'find',hidden:true});
+        api.setFrameAttr({name: 'group-user',hidden:true});
     }
     
     function showIntroPage(intro_dot_w, intro_dot_h) {
@@ -382,13 +423,16 @@
 			       	});
             	},50);
             }
-            
 		   api.execScript({
 		   	   name: 'root',
 		   	   frameName: 'dot_slider',
 		   	   script: 'try{changeDot('+index+');}catch(e){}'
 		   });
         });
+    }
+
+    function aaa(index) {
+        alert(index);
     }
  </script>
 </html>

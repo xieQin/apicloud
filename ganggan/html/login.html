@@ -209,6 +209,7 @@ margin-bottom:-120px;
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/jquery-min.js"></script>
+<script type="text/javascript" src="../script/common.js"></script>
 <script type="text/javascript">
 	var closeCurrent = function() {
 		api.closeWin();
@@ -226,7 +227,8 @@ margin-bottom:-120px;
   }
   var openUserPage = function() {
     var key = "LOGIN_USER";
-    $api.setStorage(key, 10);
+    $api.setStorage(key, 1);
+    openCommon(4);
     api.closeWin();
   }
 	apiready = function(){
