@@ -97,14 +97,14 @@
     		text-align:center;
 		}
 		.topbar>em.back {
-			position: absolute;
-  			left: 14px;
-  			width: 20px;
-  			height: 38px;
-  			top: 6px;
-  			background-size: cover;
-  			background: url(../res/lift_nomal.png) no-repeat;
-		}
+            position: absolute;
+            left: 14px;
+            width: 25px;
+            height: 25px;
+            top: 12px;
+            background: url(../res/lift_nomal.png) no-repeat;
+            background-size: cover;
+        }
 		section a span.placeholder{
 			color: #ccc;
 			position: absolute;

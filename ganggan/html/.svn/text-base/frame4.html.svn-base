@@ -17,13 +17,67 @@
     </style>
 </head>
 <body>
-<div id="wrap">
-	<header id="header">
-        <div class="topbar  activebar">发现</div>
-    </header>
-    <div id="main">
-	4444444444444444
-    </div>
-</div>
 </body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/jquery-min.js"></script>
+<script>
+    var page = 0;
+    function setRefreshHeader() {
+        api.setRefreshHeaderInfo({
+            visible: true,
+            bgColor: '#fff',
+            textColor: '#222',
+            textDown: '下拉刷新...',
+            textUp: '松开刷新...',
+            showTime: true
+        }, function (ret, err) {
+            render(0);
+            api.refreshHeaderLoadDone();
+        });
+    }
+
+    function render(index) {
+        api.showProgress();
+        if(index == 0) {
+            renderPre();
+        }
+        else {
+            renderAfter();
+        }
+        api.hideProgress();
+    }
+
+    function renderAfter() {
+        var time = new Date();
+        var html = "<p style='margin-bottom:10px;'>" + time + "</p>";
+        $('body').append(html);
+    }
+
+    function renderPre() {
+        var time = new Date();
+        var html = "<p style='margin-bottom:10px;'>" + time + "</p>";
+        $('body').prepend(html);
+    }
+
+    apiready = function() {
+        // var url = 'http://news.163.com/15/0212/19/AI9EI4TR0001124J.html';
+        // api.openFrame({
+        //     name: 'detail',
+        //     url: url,
+        //     rect: {
+        //         x: 0,
+        //         y: 0,
+        //         w: 'auto',
+        //         h: 'auto'
+        //     },
+        //     showProgress: 'true'
+        // });
+        // setRefreshHeader();
+        // render(0);
+        // api.addEventListener({name: 'scrolltobottom'}, function (ret, err) {
+        //     page++;
+        //     render(1);
+        // });
+    }
+</script>
 </html>

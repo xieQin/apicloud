@@ -49,9 +49,28 @@
 			<li>故事</li>
 		</ul>
 	</header>
-	<div class="main"></div>
+	<div class="main">
+        
+    </div>
 </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
+<script>
+    var setRefreshHeader = function(i) {
+        alert(i);
+        api.setRefreshHeaderInfo({
+            visible: true,
+            bgColor: '#fff',
+            textColor: '#222',
+            textDown: '下拉刷新...',
+            textUp: '松开刷新...',
+            showTime: true
+        }, function (ret, err) {
+        });
+    }
 
+    apiready = function() {
+        setRefreshHeader(0);
+    }
+</script>
 </html>

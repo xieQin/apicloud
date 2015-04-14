@@ -159,12 +159,13 @@
         </header>
     </div>
     <div class="header hidden">
-        <header id="header">
+        <header>
             <div class="topbar  activebar">直播</div>
         </header>
     </div>
+    <div class="header hidden"></div>
     <div class="header hidden">
-        <header id="header">
+        <header>
             <div class="topbar  activebar">发现</div>
         </header>
     </div>
@@ -193,6 +194,7 @@
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript" src="./script/jquery-min.js"></script>
 <script type="text/javascript">
+
     var jumpToIndex = function(index){
         $('.nav ul li').removeClass('li-active');
         $('.nav ul li').eq(index).addClass('li-active');
@@ -230,42 +232,47 @@
         var footer_h = $api.offset($footer).h;
         var rect_h = body_h - header_h - footer_h;
         var frame_h = body_h - footer_h;
+        $api.setStorage("currentPage", 0);
 
         window.openIndex = function(index) {
             switch(index) {
                 case 0:
-                    hideIndex();
+                    hideIndex(index);
                     api.openFrameGroup({
                         name: 'index',
                         scrollEnabled: false,
                         rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
                         index: 0,
-                        reload:true,
                         scrollEnabled:true,
                         frames: [
                             {
                                 name: 'dynamic',
                                 url: 'html/index/dynamic.html',
+                                vScrollBarEnabled:false,
                                 bounces: false,
                             },
                             {
                                 name: 'hot',
                                 url: 'html/index/hot.html',
+                                vScrollBarEnabled:false,
                                 bounces: false,
                             },
                             {
                                 name: 'analysis',
                                 url: 'html/index/analysis.html',
+                                vScrollBarEnabled:false,
                                 bounces: false,
                             },
                             {
                                 name: 'help',
                                 url: 'html/index/help.html',
+                                vScrollBarEnabled:false,
                                 bounces: false,
                             },
                             {
                                 name: 'story',
                                 url: 'html/index/story.html',
+                                vScrollBarEnabled:false,
                                 bounces: false,
                             }
                         ]
@@ -275,20 +282,23 @@
                         $('.nav ul li').removeClass('li-active');
                         $('.nav ul li').eq(index).addClass('li-active');
                     });
+                    $api.setStorage("currentPage", 0);
                     changeIndexFooter(index);
                     break;
                 case 1:
-                    hideIndex();
+                    hideIndex(index);
+                    var height_1 = $(".header").eq(index).height();
                     api.openFrame({
                         name: 'live',
                         scrollEnabled: false,
-                        rect: {x: 0, y: 0, w: 'auto', h: frame_h},
-                        reload:true,
+                        rect: {x: 0, y: height_1, w: 'auto', h: frame_h - height_1},
                         bounces: false,
                         bgColor: '#fff',
-                        url: 'html/frame2.html'
+                        url: 'html/frame2.html',
+                        showProgress: 'true'
                     }, function (ret, err) {
                     });
+                    $api.setStorage("currentPage", 1);
                     changeIndexFooter(index);
                     break;
                 case 2:
@@ -306,17 +316,30 @@
                     });
                     break;
                 case 3:
-                    hideIndex();
+                    hideIndex(index);
+                    var height_3 = $(".header").eq(index).height();
+                    var url = 'http://www.taobao.com';
                     api.openFrame({
                         name: 'find',
+                        url: url,
                         scrollEnabled: false,
                         rect: {x: 0, y: 0, w: 'auto', h: frame_h},
-                        reload:true,
                         bounces: false,
                         bgColor: '#fff',
-                        url: 'html/frame4.html'
+                        showProgress: true,
                     }, function (ret, err) {
-                    });
+                    })
+                    // api.openFrame({
+                    //     name: 'find',
+                    //     scrollEnabled: false,
+                    //     rect: {x: 0, y: height_3, w: 'auto', h: frame_h - height_3},
+                    //     reload:true,
+                    //     bounces: false,
+                    //     bgColor: '#fff',
+                    //     url: 'html/frame4.html'
+                    // }, function (ret, err) {
+                    // });
+                    $api.setStorage("currentPage", 3);
                     changeIndexFooter(index);
                     break;
                 case 4:
@@ -336,6 +359,7 @@
                                 vScrollBarEnabled:false,
                             }, function (ret, err) {
                             });
+                            $api.setStorage("currentPage", 4);
                             changeIndexFooter(index);
                         }
                     }
@@ -359,13 +383,21 @@
             }
         }
         changeIndex(0);
-
 		if(restData != 1) {
         	showIntroPage(intro_dot_w, intro_dot_h);
         }
     };
 
-    function hideIndex() {
+    var frameJson = {
+        '0': 'index',
+        '1': 'live',
+        '3': 'find',
+        '4': 'group-user'
+    };
+
+    function hideIndex(index) {
+        $(".header").hide();
+        $(".header").eq(index).show();
         api.setFrameGroupAttr({name: 'index',hidden:true});
         api.setFrameAttr({name: 'live',hidden:true});
         api.setFrameAttr({name: 'find',hidden:true});
