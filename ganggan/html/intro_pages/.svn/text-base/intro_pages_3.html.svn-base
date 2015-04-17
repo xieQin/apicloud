@@ -22,6 +22,7 @@
     <img src="../../res/1080x1920-3.png" class="intro_img" alt="图片"/>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/common.js"></script>
 <script type="text/javascript">
 	var closeIntro = function(){
 		var key="restData";       
@@ -35,6 +36,7 @@
 	        name: 'dot_slider',
 	        hidden: true
         });
+        openCommon(0);
 	};
 	apiready = function(){
 	};

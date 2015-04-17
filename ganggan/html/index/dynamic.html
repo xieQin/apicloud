@@ -13,7 +13,7 @@
     </div>
 </body>
 <script type="text/html" id="tmpl">
-    <div class="list-box">
+    <div class="list-box animate">
         <div class="list-right">
             <a class="list-left" href="#"><img src="{{UserAvatar}}" alt=""></a>
             <a class="list-a m55" href="#">{{UserName}}</a>
@@ -66,6 +66,7 @@
 
     function render(index) {
         api.showProgress();
+        sleep(1000);
         if(index == 0) {
             renderPre();
         }

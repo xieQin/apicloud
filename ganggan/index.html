@@ -140,6 +140,32 @@
         .hidden {
             display: none;
         }
+        .nav_header {
+            border-bottom: solid 1px #ccc;
+            font-size: 0px;
+        }
+        .nav-list {
+            display: inline-block;
+            width: 20%;
+            margin-left: 4%;
+            margin-top: 10px;
+            margin-bottom: 5px;
+        }
+        .nav_header .nav-list .nav-list-a {
+            width: 70px;
+            margin: 0 auto;
+        }
+        .nav_header img {
+            width: 100%;
+            height: auto;
+        }
+        .nav_header span {
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 5px;
+        }
     </style>
 </head>
 <body>
@@ -161,6 +187,32 @@
     <div class="header hidden">
         <header>
             <div class="topbar  activebar">直播</div>
+        </header>
+        <header class="nav_header">
+            <div class="nav-list">
+                <div class="nav-list-a">
+                    <img src="./res/live/zbj_icon1_height.png" alt="">
+                    <span>操盘达人</span>
+                </div>
+            </div>
+            <div class="nav-list">
+                <div class="nav-list-a">
+                    <img src="./res/live/zbj_icon2_height.png" alt="">
+                    <span>机构策略</span>
+                </div>
+            </div>
+            <div class="nav-list">
+                <div class="nav-list-a">
+                    <img src="./res/live/zbj_icon3_height.png" alt="">
+                    <span>金牌分析</span>
+                </div>
+            </div>
+            <div class="nav-list">
+                <div class="nav-list-a">
+                    <img src="./res/live/zbj_icon4_height.png" alt="">
+                    <span>我的收藏</span>
+                </div>
+            </div>
         </header>
     </div>
     <div class="header hidden"></div>
@@ -244,6 +296,7 @@
                         rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
                         index: 0,
                         scrollEnabled:true,
+                        preload: 0,
                         frames: [
                             {
                                 name: 'dynamic',
@@ -294,8 +347,10 @@
                         rect: {x: 0, y: height_1, w: 'auto', h: frame_h - height_1},
                         bounces: false,
                         bgColor: '#fff',
-                        url: 'html/frame2.html',
-                        showProgress: 'true'
+                        url: 'html/live/live.html',
+                        showProgress: 'true',
+                        vScrollBarEnabled:false,
+                        delay:200
                     }, function (ret, err) {
                     });
                     $api.setStorage("currentPage", 1);
@@ -318,27 +373,17 @@
                 case 3:
                     hideIndex(index);
                     var height_3 = $(".header").eq(index).height();
-                    var url = 'http://www.taobao.com';
                     api.openFrame({
                         name: 'find',
-                        url: url,
                         scrollEnabled: false,
-                        rect: {x: 0, y: 0, w: 'auto', h: frame_h},
+                        rect: {x: 0, y: height_3, w: 'auto', h: frame_h - height_3},
+                        reload:true,
                         bounces: false,
                         bgColor: '#fff',
-                        showProgress: true,
+                        url: 'html/frame4.html',
+                        delay: 200,
                     }, function (ret, err) {
-                    })
-                    // api.openFrame({
-                    //     name: 'find',
-                    //     scrollEnabled: false,
-                    //     rect: {x: 0, y: height_3, w: 'auto', h: frame_h - height_3},
-                    //     reload:true,
-                    //     bounces: false,
-                    //     bgColor: '#fff',
-                    //     url: 'html/frame4.html'
-                    // }, function (ret, err) {
-                    // });
+                    });
                     $api.setStorage("currentPage", 3);
                     changeIndexFooter(index);
                     break;
@@ -357,6 +402,7 @@
                                 reload:true,
                                 bgColor: '#fff',
                                 vScrollBarEnabled:false,
+                                delay:200
                             }, function (ret, err) {
                             });
                             $api.setStorage("currentPage", 4);
@@ -382,9 +428,11 @@
                     break;
             }
         }
-        changeIndex(0);
 		if(restData != 1) {
         	showIntroPage(intro_dot_w, intro_dot_h);
+        }
+        else {
+            changeIndex(0);
         }
     };
 
@@ -423,21 +471,21 @@
                     pageParam:{}, 
                     bounces:false, 
                     opaque:true,
-                    bgColor: '#484069'
+                    bgColor: '#fff'
                 },{
                     name: 'intro_2', 
                     url: './html/intro_pages/intro_pages_2.html', 
                     pageParam:{}, 
                     bounces:false, 
                     opaque:true,
-                    bgColor: '#DE96AC'
+                    bgColor: '#fff'
                 },{
                     name: 'intro_3', 
                     url: './html/intro_pages/intro_pages_3.html', 
                     pageParam:{}, 
                     bounces:false, 
                     opaque:true,
-                    bgColor: '#187E00'
+                    bgColor: '#fff'
                 }
             ]
          
