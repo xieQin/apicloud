@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>活动</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style>
+    	.animate {
+    		-webkit-transform: scale(0.6);
+    		transform: scale(0.6);
+    		-webkit-animation: scaleUp 0.65s ease-in-out forwards;
+    		animation: scaleUp 0.65s ease-in-out forwards;
+		}
+
+		@-webkit-keyframes scaleUp {
+    		0% { -webkit-transform: scale(0); opacity: 0; }
+   		 	100% { -webkit-transform: scale(1); opacity: 1; }
+		}
+
+		@keyframes scaleUp {
+    		0% { -webkit-transform: scale(0); transform: scale(0); opacity: 0; }
+    		100% { -webkit-transform: scale(1); transform: scale(1); opacity: 1; }
+		}
+    	.box {
+    		display: inline-block;
+    		margin: 10px 8px 0 8px;
+			box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.18), 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+    	}
+    	.m65 {
+    		margin: 6px 5px;
+    	}
+    	.box-a {
+    		display: inline-block;
+    	}
+    	.box-a-a {
+    		float: left;
+    		font-size: 18px;
+    		margin-right: 78px;
+    		font-weight: bold;
+    	}
+    	.box-a-b {
+    		position: absolute;
+    		right: 15px;
+			font-size: 12px;
+			color: #ccc;
+			line-height: 15px;
+    	}
+    	.box-b {
+    	}
+    	.box-b p {
+    		font-size: 16px;
+    		line-height: 25px;
+    	}
+    	.box-c {
+    		display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+    	}
+    	.box-clear {
+    		-webkit-flex: 1;
+  			flex: 1;
+    		-webkit-box-flex:1;
+    	}
+    	.box-btn {
+    		color: #fff;
+  			padding: 3px 5px;
+  			background: rgb(252, 80, 80);
+  			border-radius: 5px;
+    	}
+    </style>
+<body>
+</body>
+<script type="text/html" id="live-tmpl">
+    <div class="box animate">
+    	<div class="box-a m65">
+    		<span class="box-a-a">杠杆送金币活动开始啦！</span>
+    		<span class="box-a-b">2015年4月20日</span>
+    	</div>
+    	<div class="box-b m65">
+    		<p>杠杆送金币活动开始啦！杠杆送金币活动开始啦！杠杆送金币活动开始啦！杠杆送金币活动开始啦！杠杆送金币活动开始啦！杠杆送金币活动开始啦！杠杆送金币活动开始啦！杠杆送金币活动开始啦！杠杆送金币活动开始啦！</p>
+    	</div>
+    	<div class="box-c m65">
+    		<a href="" class="box-clear"></a>
+    		<a href="" class="box-btn">领取金币</a>
+    	</div>
+    </div>
+</script>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/data.js"></script>
+<script type="text/javascript" src="../../script/jquery-min.js"></script>
+<script type="text/javascript" src="../../script/template.js"></script>
+<script>
+    function setRefreshHeader() {
+        api.setRefreshHeaderInfo({
+            visible: true,
+            bgColor: '#fff',
+            textColor: '#222',
+            textDown: '下拉刷新...',
+            textUp: '松开刷新...',
+            showTime: true
+        }, function (ret, err) {
+            render(0);
+            api.refreshHeaderLoadDone();
+        });
+    }
+    function render(index) {
+        var html = $("#live-tmpl").html();
+        api.showProgress();
+        sleep(500);
+        if(index == 0) {
+            $('body').prepend(html);
+            $('body').prepend(html);
+        }
+        else {
+            $('body').append(html);
+            $('body').append(html);
+        }
+        api.hideProgress();
+    }
+    apiready = function() {
+        setRefreshHeader();
+        render(0);
+        api.addEventListener({name: 'scrolltobottom'}, function (ret, err) {
+            render(1);
+        });
+    }
+</script>
+</html>

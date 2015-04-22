@@ -1,0 +1,146 @@
+@charset "UTF-8";
+#wrap {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.topbar {
+    background: #377bd0;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+}
+div.topbar {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+div.topbar span {
+    flex: 1;
+}
+.activebar {
+    display: block;
+}
+.topbar span {
+    color: #fff;
+}
+.topbar>em.back {
+	position: absolute;
+    left: 14px;
+    width: 25px;
+    height: 25px;
+    top: 12px;
+    background: url(../res/lift_nomal.png) no-repeat;
+    background-size: cover;
+}
+.studio-analyst {
+	height: 80px;
+	margin-bottom: 15px;
+	background: #fff;
+}
+.studio-user {
+    padding-bottom: 40px;
+	background: #fff;
+	overflow: auto;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+    overflow: auto;
+}
+.talkbox {
+    display: inline-block;
+    height: auto;
+    float: left;
+    width: 100%;
+	height: auto;
+}
+.taklbox-info {
+	float: left;
+	margin-left: -80px;
+	width: 80px;
+}
+.taklbox-info-a {
+	width: 50px;
+	border-radius: 5px;
+    margin: 5px 0 0 15px;
+}
+.taklbox-info-b {
+	font-size: 14px;
+   	margin-left: 26px;
+   	margin-bottom: 10px;
+}
+.talkbox-content {
+	float: left;
+	margin-left: 80px;
+	margin-right: 5px;
+}
+.talkbox-content-r {
+	float: right;
+	margin-right: 80px;
+	margin-left: 5px;
+}
+.taklbox-info-r {
+	float: right;
+	margin-right: -80px;
+	width: 80px;
+}
+.talkbox-talk {
+	box-sizing: border-box;
+	word-break:break-word;
+	margin-top: 10px;
+	box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.18), 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+  	border-radius: 8px;
+  	line-height: 20px;
+  	min-height: 20px;
+  	font-size: 17px;
+  	padding: 6px 16px 9px;
+}
+.input {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+	height: 40px;
+    width: 100%;
+    z-index: 444;
+	background: red;
+	display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.icon-emoji {
+	display: block;
+	background: url(../res/fb_icon4.png);
+}
+.icon-file {
+	display: block;
+	background: url(../res/fb_icon2.png);
+}
+.header-btn {
+    display: inline-block;
+    width: 70%;
+    border: solid 1px #377bd0;
+    margin: 10px 15%;
+    border-radius: 4px;
+}
+.header-btn span {
+    float: left;
+    width: 50%;
+    text-align: center;
+    height: 25px;
+    line-height: 25px;
+    background: #fff;
+    color: #377bd0;
+}
+.header-btn span.header-btn-active {
+    background: #377bd0;
+    color: #fff;
+}
+.header-btn-a {
+    border-bottom-left-radius: 2px;
+    border-top-left-radius: 2px;
+}
+.header-btn-b {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+}

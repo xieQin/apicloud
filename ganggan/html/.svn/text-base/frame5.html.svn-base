@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>个人</title>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+<style>
+body {
+}
+#main {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    display:-webkit-box;
+    -webkit-box-orient: vertical;
+}
+#header {
+    height:175px;
+    background-color:#377bd0;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+}
+header>div {
+    display:-webkit-box;
+    -webkit-box-pack:center;
+    -webkit-box-align:start;
+}
+#logo {
+   -webkit-box-flex:1;
+   -webkit-box-align:center;
+}
+#title {
+    height:25px;
+    color:#fff;
+}
+#desp {
+    height:25px;
+    color:#fff;
+}
+#logo>img {
+    width:98px;
+    height:98px;
+}
+#title>strong {
+    font-size:16px;
+    color:#fff;
+}
+#desp>em {
+    font-size:15px;
+    color:#fff;
+}
+section {
+    -webkit-box-flex:1;
+    display:-webkit-box;
+    -webkit-box-orient:vertical;
+    background-color:#fff;
+    overflow: auto;
+}
+a {
+	width: 100%;
+    position:relative;
+    -webkit-box-flex:1;
+    margin-bottom: 5px;
+}
+.ui {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon1@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+
+.navmenu {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon2@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+.function {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon3@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+.device {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon4@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+.api {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon5@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+.other {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon6@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+.qr {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon7@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+.gold {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon8@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+.set {
+    color:#9d9d9d;
+    background:url(../res/user/yhzx_icon9@2x.png) no-repeat 14px 15px;
+    -webkit-background-size:16px 16px;
+}
+a>span {
+    margin-top:15px;
+    margin-left:48px;
+    line-height:16px;
+    font-size:16px;
+    line-height:16px;
+}
+a>em {
+    position:absolute;
+    top:14px;
+    right:10px;
+    width:18px;
+    height:18px;
+    background:url(../res/user/yhzx_right@2x.png) no-repeat;
+    -webkit-border-radius:3px;
+    background-size: cover;
+    color:#3c7390;
+    font-size:10px;
+    line-height:18px;
+    text-align:center;
+}
+</style>
+</head>
+<body>
+    <div id="main">
+        <header id="header">
+            <div id="logo">
+                <img src="../res/user/yhzx_touxiang@2x.png" />
+            </div>
+            <div id="title">
+                飞跃小杠杆
+            </div>
+            <div id="desp">
+                <em>给我一个杠杆，我就能撬动地球</em>
+            </div>
+        </header>
+        <section>
+            <a class="ui" tapmode="ui-hov" onclick="openWin(0)">
+                <span>原创</span>
+                <em id="sortCount0"></em>
+            </a>
+            <a class="navmenu" tapmode="navmenu-hov" onclick="openWin(1)">
+                <span>评论我的</span>
+                <em id="sortCount1"></em>
+            </a>
+            <a class="function" tapmode="function-hov" onclick="openWin(2)">
+                <span>@我</span>
+                <em id="sortCount2"></em>
+            </a>
+            <a class="device" tapmode="device-hov" onclick="openWin(3)">
+                <span>消息</span>
+                <em id="sortCount3"></em>
+            </a>
+            <a class="api" tapmode="api-hov" onclick="openWin(4)">
+                <span>收藏</span>
+                <em id="sortCount4"></em>
+            </a>
+            <a class="other" tapmode="other-hov" onclick="openWin(5)">
+                <span>好友圈</span>
+                <em id="sortCount5"></em>
+            </a>
+            <a class="qr" tapmode="qr-hov" onclick="openWin(6)">
+                <span>二维码</span>
+                <em id="sortCount6"></em>
+            </a>
+            <a class="gold" tapmode="gold-hov" onclick="openWin(7)">
+                <span>金币</span>
+                <em id="sortCount7"></em>
+            </a>
+            <a class="set" tapmode="set-hov" onclick="openWin(8)">
+                <span>设置</span>
+                <em id="sortCount8"></em>
+            </a>
+        </section>
+    </div>
+    </div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/jquery-min.js"></script>
+<script>
+	function openWin(i) {
+		var key = "LOGIN_USER";
+        var user = $api.getStorage(key);
+        if(localStorage.getItem("userId")) {
+        	api.openWin({
+            	name: 'set',
+            	url: 'set.html',
+            	pageParam: {
+            	    name: 'set',
+            	},
+            	animation: {
+           	    	type: 'movein',
+                	subType: 'from_right',
+                	duration: 300
+            	}
+        	});
+        }
+        else {
+        	api.openWin({
+                name: 'login',
+                url: 'login.html',
+                pageParam: {
+                    name: 'login',
+                },
+                animation: {
+                    type: 'movein',
+                    subType: 'from_right',
+                    duration: 300
+                },
+                vScrollBarEnabled: false
+            });
+        }
+	}
+    apiready = function(){
+        
+    };
+</script>
+</html>

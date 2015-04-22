@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>frame1</title>
+    <link rel="stylesheet" type="text/css" href="../css/api.css"/>
+    <style>
+        ul {
+            display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            border-bottom:solid #ccc 1px;
+        }
+        li {
+        	list-style: none;
+        }
+        .nav ul li {
+            -webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            height: 35px;
+            font-size:16px;
+            line-height:35px;
+            text-align:center;
+        }
+        .topbar {
+            background: #377bd0;
+            height: 50px;
+            border-bottom: 1px solid #DDDFE3;
+            line-height: 50px;
+            text-align: center;
+            display: none;
+            color: #fff;
+        }
+        .activebar {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+	<header class="nav">
+		<ul>
+			<li>动态</li>
+			<li>热门</li>
+			<li>分析</li>
+			<li>求助</li>
+			<li>故事</li>
+		</ul>
+	</header>
+	<div class="main">
+        
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script>
+    var setRefreshHeader = function(i) {
+        alert(i);
+        api.setRefreshHeaderInfo({
+            visible: true,
+            bgColor: '#fff',
+            textColor: '#222',
+            textDown: '下拉刷新...',
+            textUp: '松开刷新...',
+            showTime: true
+        }, function (ret, err) {
+        });
+    }
+
+    apiready = function() {
+        setRefreshHeader(0);
+    }
+</script>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>设置</title>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<link rel="stylesheet" type="text/css" href="../css/api.css"/>
+<link rel="stylesheet" type="text/css" href="../css/common.css" />
+    <style>
+    	html,body,div{
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			width:100%;
+			height:100%;
+		}
+		.wrap {
+			height: 100%;
+			display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-flex-flow: column;
+            flex-flow: column;
+		}
+		
+		#main {
+			width:100%;
+			-webkit-box-flex: 1;
+            -webkit-flex: 1;
+            flex: 1;
+            outline: none;
+		}
+		.main-area {
+			margin-top:40%;
+		}
+		#main img {
+			width:23%;
+			float:left;
+			margin:5%;
+		}
+		.topbar {
+            background: #377bd0;
+            height: 50px;
+            border-bottom: 1px solid #DDDFE3;
+            line-height: 50px;
+            text-align: center;
+            display: none;
+            color: #fff;
+            /*background: url() no-repeat;*/
+        }
+        .activebar {
+            display: block;
+        }
+        .topbar span {
+        	color: #fff;
+        }
+		.tx-l {text-align:left; text-indent:1em;}
+		.tx-r {
+			text-indent: 16%;
+		}
+		section {
+  			-webkit-flex: 1;
+  			flex: 1;
+    		-webkit-box-flex:1;
+    		display:-webkit-box;
+    		-webkit-box-orient:vertical;
+    		background-color:#fff;
+    		overflow: auto;
+		}
+		a {
+			width: 100%;
+    		position:relative;
+    		-webkit-box-flex:1;
+    		margin-bottom: 15px;
+		}
+		a>span {
+    		margin-top:15px;
+    		margin-left:20px;
+    		line-height:16px;
+    		font-size:16px;
+    		line-height:16px;
+		}
+		a>em {
+   			position:absolute;
+    		top:14px;
+    		right:10px;
+    		width:18px;
+    		height:18px;
+    		background:url(../res/user/yhzx_right@2x.png) no-repeat;
+    		-webkit-border-radius:3px;
+    		background-size: cover;
+    		color:#3c7390;
+    		font-size:10px;
+    		line-height:18px;
+    		text-align:center;
+		}
+		.topbar>em.back {
+			position: absolute;
+            left: 14px;
+            width: 25px;
+            height: 25px;
+            top: 12px;
+            background: url(../res/lift_nomal.png) no-repeat;
+            background-size: cover;
+		}
+		section a span.placeholder{
+			color: #ccc;
+			position: absolute;
+  			right: 40px;
+		}
+        footer {
+            height: 50px;
+        }
+        footer>span {
+            color: #fff;
+            border-radius: 3px;
+            width: 80%;
+            line-height: 40px;
+            display: block;
+            margin: 0 auto;
+            height: 40px;
+            text-align: center;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+		<header>
+        <div class="topbar activebar">
+        	<em class="back" onclick="closeCurrent();"></em>
+        	<span>设置</span>
+        </div>
+	    </header>
+	    <section>
+            <a class="ui" tapmode="ui-hov" onclick="openWin(0)">
+                <span>账号绑定</span>
+                <span class="placeholder">未绑定</span>
+                <em id="sortCount0"></em>
+            </a>
+            <a class="navmenu" tapmode="navmenu-hov" onclick="openWin(1)">
+                <span>修改密码</span>
+                <em id="sortCount1"></em>
+            </a>
+            <a class="function" tapmode="function-hov" onclick="openWin(2)">
+                <span>完善资料</span>
+                <em id="sortCount2"></em>
+            </a>
+            <a class="device" tapmode="device-hov" onclick="openWin(3)">
+                <span>杠杆认证</span>
+                <em id="sortCount3"></em>
+            </a>
+            <a class="api" tapmode="api-hov" onclick="openWin(4)">
+                <span>推送设置</span>
+                <em id="sortCount4"></em>
+            </a>
+            <a class="other" tapmode="other-hov" onclick="openWin(5)">
+                <span>意见反馈</span>
+                <em id="sortCount5"></em>
+            </a>
+            <a class="qr" tapmode="qr-hov" onclick="openWin(6)">
+                <span>应用推荐</span>
+                <em id="sortCount5"></em>
+            </a>
+            <a class="gold" tapmode="gold-hov" onclick="openWin(7)">
+                <span>关于杠杆</span>
+                <em id="sortCount5"></em>
+            </a>
+        </section>
+        <footer>
+        <span onclick="logOut();">退出登录</span>
+    </footer>
+	</div>
+</body>
+<script type="text/javascript" src="../script/api.js"></script>
+<script type="text/javascript" src="../script/jquery-min.js"></script>
+<script>
+	var closeCurrent = function() {
+		api.closeWin();
+	}
+	var logOut = function() {
+        api.showProgress();
+        var user = api.require('user');
+        user.logout(function(ret, err){
+            api.hideProgress();
+            if(ret){
+                api.confirm({
+                    title: '确定要登出账号?',
+                    buttons:[ '取消', '确定']
+                },function(ret,err){
+                    if(ret.buttonIndex == 2){
+                        localStorage.removeItem('userId');
+                        api.closeWin();
+                    }else{
+
+                    }
+                });
+            }else{
+                api.toast({msg: err.message, location: "middle"})
+            }
+        });
+	}
+	function openWin(i) {
+		var i = parseInt(i, 10);
+		var string = $("section a").eq(i).children('span').html();
+		alert(string);
+	}
+</script>
+</html>

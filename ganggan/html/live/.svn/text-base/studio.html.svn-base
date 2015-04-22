@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>直播室</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <style>
+    	#wrap {
+    	}
+    	.topbar {
+            background: #377bd0;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            color: #fff;
+        }
+        div.topbar {
+        	display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+        }
+        div.topbar span {
+        	flex: 1;
+        }
+        .activebar {
+            display: block;
+        }
+        .topbar span {
+        	color: #fff;
+        }
+        .topbar>em.back {
+			position: absolute;
+            left: 14px;
+            width: 25px;
+            height: 25px;
+            top: 12px;
+            background: url(../../res/lift_nomal.png) no-repeat;
+            background-size: cover;
+		}
+		section {
+			flex: 1;
+			display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            flex-flow: column nowrap;
+            background: #E7E4E4;
+            min-height: 200px;
+		}
+		.studio-analyst {
+			height: 80px;
+			margin-bottom: 15px;
+			background: #fff;
+		}
+		.studio-user {
+			display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+            flex-flow: column;
+			flex: 1;
+			background: #fff;
+			overflow: auto;
+		}
+		.talkbox {
+			height: auto;
+		}
+		.taklbox-info {
+			float: left;
+			margin-left: -80px;
+			width: 80px;
+		}
+		.taklbox-info-a {
+			width: 50px;
+			border-radius: 5px;
+    		margin: 5px 0 0 15px;
+		}
+		.taklbox-info-b {
+			font-size: 14px;
+   			margin-left: 25px;
+   			margin-bottom: 10px;
+		}
+		.talkbox-content {
+			float: left;
+			margin-left: 80px;
+			margin-right: 5px;
+		}
+		.talkbox-content-r {
+			float: right;
+			margin-right: 80px;
+			margin-left: 5px;
+		}
+		.taklbox-info-r {
+			float: right;
+			margin-right: -80px;
+			width: 80px;
+		}
+		.talkbox-talk {
+			box-sizing: border-box;
+			word-break:break-word;
+			margin-top: 10px;
+			box-shadow: 0 0 7px 0 rgba(0, 0, 0, 0.18), 0 2px 2px 0 rgba(0, 0, 0, 0.15);
+  			border-radius: 8px;
+  			line-height: 20px;
+  			min-height: 20px;
+  			font-size: 17px;
+  			padding: 6px 16px 9px;
+		}
+		.input {
+			border-top: solid 1px #ccc;
+			height: 40px;
+			display: -webkit-box;
+            display: -webkit-flex;
+            display: flex;
+		}
+		.icon-emoji {
+			margin-top: 5px;
+  			width: 25px;
+  			height: 25px;
+  			margin-left: 50%;
+			display: block;
+			background: url(../../res/fb_icon4.png) no-repeat;
+			background-size: cover;
+		}
+		.icon-file {
+			margin-top: 5px;
+  			width: 25px;
+  			height: 25px;
+  			margin-left: 50%;
+			display: block;
+			background: url(../../res/fb_icon2.png) no-repeat;
+			background-size: cover;
+		}
+		.input a {
+			width: 12%;
+		}
+		.input textarea {
+			-webkit-appearance: none;
+  			appearance: none;
+  			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+  			border: 1px solid #c8c8cd;
+  			background: #fff;
+  			border-radius: 5px;
+  			box-shadow: none;
+  			padding: 3px 8px 3px;
+  			margin-top: 5px;
+  			margin-left: 10px;
+  			width: 70%;
+  			height: 28px;
+  			color: #000;
+  			font-size: 17px;
+  			line-height: 20px;
+  			font-family: inherit;
+  			resize: none;
+  			outline: none;
+  			-webkit-flex-shrink: 1;
+  			flex-shrink: 1;
+		}
+    </style>
+</head>
+<body>
+    <div id="wrap">
+    	<header>
+    		<div class="topbar">
+    			<em class="back" onclick="closeCurrent();"></em>
+    			<span></span>
+    			<span>白银大师</span>
+    			<span>全部策略</span>
+    		</div>
+    	</header>
+    	<section>
+    		<div class="studio-analyst">
+    			<div class="talkbox">
+    				<div class="talkbox-content">
+    					<div class="taklbox-info">
+    						<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+                			<span class="taklbox-info-b">10:25</span>
+    					</div>
+    					<div class="talkbox-talk">
+    						白银大师发布了第二号策略
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="studio-user">
+    			<div class="talkbox">
+    				<div class="talkbox-content">
+    					<div class="taklbox-info">
+    						<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+                			<span class="taklbox-info-b">大师</span>
+    					</div>
+    					<div class="talkbox-talk">
+    						111111111111111111111111
+    					</div>
+    				</div>
+    			</div>
+    			<div class="talkbox">
+    				<div class="talkbox-content">
+    					<div class="taklbox-info">
+    						<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+                			<span class="taklbox-info-b">大师</span>
+    					</div>
+    					<div class="talkbox-talk">
+    						deewrgsdfff
+    					</div>
+    				</div>
+    			</div>
+    			<div class="talkbox">
+    				<div class="talkbox-content-r">
+    					<div class="taklbox-info-r">
+    						<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+                			<span class="taklbox-info-b">大师</span>
+    					</div>
+    					<div class="talkbox-talk">
+    						sdh是对方还是看的何日uerefdsasasasasasasasaergerssdf
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</section>
+    	<div class="input">
+    		<textarea name="" id="" cols="30" rows="10"></textarea>
+    		<a href="">
+    			<i class="icon-emoji"></i>
+    		</a>
+    		<a href="">
+    			<i class="icon-file"></i>
+    		</a>
+    	</div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script>
+	var closeCurrent = function() {
+		api.closeWin();
+	}
+	apiready= function() {
+
+	}
+</script>
+</html>

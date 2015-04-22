@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>风云榜列表</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/studio.css" />
+<body>
+    <div id="wrap">
+    	<header>
+    		<div class="topbar">
+    			<em class="back" onclick="closeCurrent();"></em>
+    			<span></span>
+    			<span>交易所</span>
+    			<span></span>
+    		</div>
+            <div class="header-btn">
+                <span class="header-btn-a header-btn-active" onclick="jumpToIndex(0)">实力排行</span>
+                <span class="header-btn-b" onclick="jumpToIndex(1)">热度直播</span>
+            </div>
+    	</header>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-min.js"></script>
+<script>
+    var jumpToIndex = function(index){
+        $(".header-btn span").removeClass('header-btn-active');
+        $(".header-btn span").eq(index).addClass('header-btn-active');
+        api.setFrameGroupIndex ({
+            name: 'livelist',
+            index: index,
+            scroll: true
+        });
+    }
+
+	var closeCurrent = function() {
+		api.closeWin();
+	}
+
+	apiready= function() {
+        var $header = $api.dom('header');
+        var $body = $api.dom('body');
+        var header_h = $api.offset($header).h;
+        var body_h = $api.offset($body).h;
+        var rect_h = body_h - header_h;
+        var headername = api.pageParam;
+        $("header .topbar span").eq(1).html(headername.headername);
+        api.openFrameGroup({
+            name: 'livelist',
+            scrollEnabled: false,
+            rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
+            index: 0,
+            scrollEnabled:true,
+            preload: 0,
+            frames: [
+                {
+                    name: 'list',
+                    url: 'list.html',
+                    vScrollBarEnabled:false,
+                    bounces: false,
+                },
+                {
+                    name: 'list',
+                    url: 'list.html',
+                    vScrollBarEnabled:false,
+                    bounces: false,
+                }
+            ]
+        }, function (ret, err) {
+            var name = ret.name;
+            var index = ret.index;
+            $(".header-btn span").removeClass('header-btn-active');
+            $(".header-btn span").eq(index).addClass('header-btn-active');
+        });
+	}
+</script>
+</html>

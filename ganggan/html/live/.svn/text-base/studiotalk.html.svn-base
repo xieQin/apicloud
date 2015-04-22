@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>直播室聊天</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/studio.css" />
+</head>
+<body>
+    <div class="studio-user">
+    	<div class="talkbox">
+   			<div class="talkbox-content">
+    			<div class="taklbox-info">
+    				<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+             		<span class="taklbox-info-b">大师</span>
+    			</div>
+    			<div class="talkbox-talk">
+    				111111111111111111111111
+    			</div>
+    		</div>
+    	</div>
+    	<div class="talkbox">
+    		<div class="talkbox-content">
+    			<div class="taklbox-info">
+    				<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+               		<span class="taklbox-info-b">大师</span>
+    			</div>
+    			<div class="talkbox-talk">
+    				deewrgsdfff
+    			</div>
+    		</div>
+    	</div>
+    	<div class="talkbox">
+    		<div class="talkbox-content-r">
+    			<div class="taklbox-info-r">
+    				<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+             		<span class="taklbox-info-b">大师</span>
+    			</div>
+    			<div class="talkbox-talk">
+    				sdh是对方还是看的何日uerefdsasasasasasasasaergerssdf
+   				</div>
+    		</div>
+    	</div>
+    	<div class="talkbox">
+    		<div class="talkbox-content-r">
+    			<div class="taklbox-info-r">
+    				<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+             		<span class="taklbox-info-b">大师</span>
+    			</div>
+    			<div class="talkbox-talk">
+    				sdh是对方还是看的何日uerefdsasasasasasasasaergerssdf
+   				</div>
+    		</div>
+    	</div>
+    	<div class="talkbox">
+    		<div class="talkbox-content-r">
+    			<div class="taklbox-info-r">
+    				<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+             		<span class="taklbox-info-b">大师</span>
+    			</div>
+    			<div class="talkbox-talk">
+    				sdh是对方还是看的何日uerefdsasasasasasasasaergerssdf
+   				</div>
+    		</div>
+    	</div>
+    	<div class="talkbox">
+    		<div class="talkbox-content-r">
+    			<div class="taklbox-info-r">
+    				<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+             		<span class="taklbox-info-b">大师</span>
+    			</div>
+    			<div class="talkbox-talk">
+    				sdh是对方还是看的何日uerefdsasasasasasasasaergerssdf
+   				</div>
+    		</div>
+    	</div>
+    	<div class="talkbox">
+    		<div class="talkbox-content-r">
+    			<div class="taklbox-info-r">
+    				<img class="taklbox-info-a" src="../../res/resources/TaVSW6Bb_bigger.png" alt="">
+             		<span class="taklbox-info-b">大师</span>
+    			</div>
+    			<div class="talkbox-talk">
+    				sdh是对方还是看的何日uerefdsasasasasasasasaergerssdf
+   				</div>
+    		</div>
+    	</div>
+   	</div>
+   	<div class="input">
+    	<textarea name="" id="" cols="30" rows="10"></textarea>
+    	<a href="">
+    		<i class="icon-emoji"></i>
+    	</a>
+    	<a href="">
+    		<i class="icon-file"></i>
+    	</a>
+   	</div>
+</body>
+</html>

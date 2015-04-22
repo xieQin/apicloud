@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title发现</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/base.css" />
+<body>
+    <div id="wrap">
+		<header>
+        <div class="topbar activebar">
+        	<em class="back" onclick="closeCurrent();"></em>
+        	<span>风云榜</span>
+        </div>
+	    </header>
+	    <section>
+            <a class="change" tapmode="change-hov" onclick="openWin(0)">
+                <span>交易所</span>
+                <em id="sortCount0"></em>
+            </a>
+            <a class="member" tapmode="member-hov" onclick="openWin(1)">
+                <span>会员单位</span>
+                <em id="sortCount1"></em>
+            </a>
+            <a class="agent" tapmode="agent-hov" onclick="openWin(2)">
+                <span>代理商</span>
+                <em id="sortCount2"></em>
+            </a>
+        </section>
+	</div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script>
+	var closeCurrent = function() {
+		api.closeWin();
+	}
+
+	var list = {
+		'0': '交易所',
+		'1': '会员单位',
+		'2': '代理商'
+	}
+
+	var openWin = function(i) {
+		api.openWin({
+            name: 'billboardlist',
+            url: 'billboardlist.html',
+            animation: {
+                type: 'movein',
+                subType: 'from_right',
+                duration: 300
+            },
+            pageParam: {
+                headername: list[i],
+            },
+            vScrollBarEnabled: false
+        }, function (ret, err) {
+        });
+	}
+</script>
+</html>

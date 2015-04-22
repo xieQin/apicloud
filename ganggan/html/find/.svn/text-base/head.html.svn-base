@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <title>顶部栏</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/studio.css" />
+<body>
+    <div id="wrap">
+    	<header>
+    		<div class="topbar">
+    			<em class="back" onclick="closeCurrent();"></em>
+    			<span></span>
+    			<span>loading...</span>
+    			<span></span>
+    		</div>
+    	</header>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery-min.js"></script>
+<script>
+	var closeCurrent = function() {
+		api.closeWin();
+	}
+
+	apiready= function() {
+        var $header = $api.dom('header');
+        var $body = $api.dom('body');
+        var header_h = $api.offset($header).h;
+        var body_h = $api.offset($body).h;
+        var rect_h = body_h - header_h;
+        var headername = api.pageParam;
+        $("header .topbar span").eq(1).html(headername.headername);
+        var index = headername.indexname;
+        switch(index) {
+        	case 1:
+        		api.openFrame({
+            		name: 'businesslist',
+            		scrollEnabled: false,
+            		rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
+            		url: 'business.html',
+            		bounces: false,
+            		reload:true,
+            		bgColor: '#fff',
+            		vScrollBarEnabled:false,
+            		delay:200
+        		}, function (ret, err) {
+        		});
+        		break;
+        	case 2:
+        		api.openFrame({
+            		name: 'activitylist',
+            		scrollEnabled: false,
+            		rect: {x: 0, y: header_h, w: 'auto', h: rect_h},
+            		url: 'activitylist.html',
+            		bounces: false,
+            		reload:true,
+            		bgColor: '#fff',
+            		vScrollBarEnabled:false,
+            		delay:200
+        		}, function (ret, err) {
+        		});
+        		break;
+        }
+	}
+</script>
+</html>

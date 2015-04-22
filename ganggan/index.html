@@ -190,25 +190,25 @@
         </header>
         <header class="nav_header">
             <div class="nav-list">
-                <div class="nav-list-a">
+                <div class="nav-list-a" onclick="openStudio(0)">
                     <img src="./res/live/zbj_icon1_height.png" alt="">
                     <span>操盘达人</span>
                 </div>
             </div>
             <div class="nav-list">
-                <div class="nav-list-a">
+                <div class="nav-list-a" onclick="openStudio(1)">
                     <img src="./res/live/zbj_icon2_height.png" alt="">
                     <span>机构策略</span>
                 </div>
             </div>
             <div class="nav-list">
-                <div class="nav-list-a">
+                <div class="nav-list-a" onclick="openStudio(2)">
                     <img src="./res/live/zbj_icon3_height.png" alt="">
                     <span>金牌分析</span>
                 </div>
             </div>
             <div class="nav-list">
-                <div class="nav-list-a">
+                <div class="nav-list-a" onclick="openStudio(3)">
                     <img src="./res/live/zbj_icon4_height.png" alt="">
                     <span>我的收藏</span>
                 </div>
@@ -264,6 +264,30 @@
     function changeIndexFooter(index) {
         $('#footer ul li').removeClass('active');
         $('#footer ul li').eq(index).addClass('active');
+    }
+
+    var studiolist = {
+        '0': '操盘达人',
+        '1': '机构策略',
+        '2': '金牌分析',
+        '3': '我的收藏'
+    }
+
+    var openStudio = function(i) {
+        api.openWin({
+            name: 'studiolist',
+            url: 'html/live/studiolist.html',
+            animation: {
+                type: 'movein',
+                subType: 'from_right',
+                duration: 300
+            },
+            pageParam: {
+                headername: studiolist[i],
+            },
+            vScrollBarEnabled: false
+        }, function (ret, err) {
+        });
     }
 
     apiready = function(){
